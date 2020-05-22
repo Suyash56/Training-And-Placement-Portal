@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <title>PORTAL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="{% static 'style.css'%}">-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <style media="screen">
+     <!--<link rel="stylesheet" href="{% static 'circle.css'%}">-->
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:lavenderblush
+}
+.header {
+  padding: 30px;
+  background: linear-gradient(to top left, #ff6600 0%, #ffffcc 100%);
+  color: black;
+  font-size: 15px;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #454441;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 20px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px #ccc;
+  }
+}
+.btn {
+  background-color: black;
+  border: none;
+  text-align: center;
+  /* color: black; */
+  padding: 16px 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: black;
+
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: lavenderblush;
+  text-align: center;
+  padding: 12px 12px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  background-color:rgb(242, 247, 248);
+  color: black;
+    transform: scale(1.2);
+}
+
+.topnav a.active {
+  background-color: black;
+  color: gray
+}
+
+.kkwlogo{
+width:140px;
+height:90px;
+position: absolute;
+	top: 0;
+	left: 5px;
+}
+<!--.kkw1{
+width:100%;
+height:150px;
+position:absolute;
+top:0;
+display:inline;
+}-->
+
+
+
+    </style>
+
+ <script src="{% static 'script.js'%}"></script>
+  </head>
+
+
+
+  <body>
+<img class="kkwlogo" src= "{% static 'kkwlogo.png' %}" >
+<!-- <img class="kkw1" src="{% static 'kkw1.jpg' %}">-->
+   <div class="header">
+      <h1 style="text-align: center ">TRAINING AND PLACEMENT PORTAL</h1>
+  </div>
+
+
+ <div class="topnav navbar-expand sticky-top">
+   <a class="link " href="{% url 'home' %}"><i class="fas fa-home"> Home</i></a>
+    <a class="link " href="{% url 'register' %}"><i class="fas fa-registered"> Register</i></a>
+    {% if user.is_authenticated %}
+      <a class="link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"> Logout</i></a>
+    {% else %}
+      <a class="link" href="{% url 'user_login' %}"><i class="fas fa-sign-in-alt"> Login</i></a>
+    {% endif %}
+</div>
+
+
+
+
+
+      {% block content %}
+      {% endblock%}
+  </body>
+</html>
